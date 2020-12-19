@@ -8,7 +8,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" *ngFor="let item of categorias">
-        <a class="nav-link" [routerLink]="item.cat_url">{{ item.cat_nombre }}</a>
+        <a class="nav-link" [routerLink]="'/productos/'+item.cat_url">{{ item.cat_nombre }}</a>
       </li>
     </ul>
     <div class="form-inline my-2 my-lg-0">
