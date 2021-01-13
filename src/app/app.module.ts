@@ -8,19 +8,23 @@ import { NavBarComponent } from './componets/nav-bar/nav-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MacComponent } from './pages/mac/mac.component';
 import { ProductosComponent } from './pages/productos/productos.component';
-
+import { SignupComponent } from './pages/signup/signup.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     MacComponent,
     ProductosComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

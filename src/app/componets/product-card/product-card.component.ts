@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ProductCardComponent implements OnInit {
 
+  storage:string;
+
   @Input() producto:any;
 
-  constructor() { }
+  constructor() {
+    this.storage = environment.storage
+
+    console.log(this.storage)
+   }
 
   ngOnInit(): void {
     console.log(this.producto)
