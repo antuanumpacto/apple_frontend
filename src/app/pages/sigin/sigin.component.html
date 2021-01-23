@@ -1,0 +1,42 @@
+<app-nav-bar [showButtons]="showButtons"></app-nav-bar>
+
+<div class="container-fluid total-size d-flex justify-content-center align-content-center pt-5">
+  <div class="row w-100 d-flex justify-content-center">
+    <div class="w-100 col-lg-6 col-md-6 col-sm-12 ">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Iniciar sesión</h5>
+
+          <h5 class="message-error">{{ errorMessage }}</h5>
+          <form [formGroup]="formSignin">
+
+            <div class="form-group">
+              <label for="usu_email">Email<span style="color: #bd2130;"> *</span></label>
+              <input type="email" class="form-control" id="usu_email" formControlName="usu_email"
+                [ngClass]="{'is-invalid': ((signInFormValidator.usu_email.touched || signInFormValidator.usu_email.dirty ) && signInFormValidator.usu_email.errors) || checkErrors(errores,'usu_email').length > 0 }">
+              <small id="emailHelp" class="form-text invalid-feedback"
+                *ngIf="((signInFormValidator.usu_email.touched || signInFormValidator.usu_email.dirty) && signInFormValidator.usu_email.errors && signInFormValidator.usu_email.errors.required)">El
+                campo es requerido</small>
+              <small id="emailHelp" class="form-text invalid-feedback"
+                *ngIf="(signInFormValidator.usu_email.touched || signInFormValidator.usu_email.dirty) && signInFormValidator.usu_email.errors && signInFormValidator.usu_email.errors.email">El
+                tiene un formato incorrecto</small>
+              <div *ngIf="errores">
+                <small *ngFor="let item of checkErrors(errores,'usu_email')"
+                  class="form-text color-red-small">{{ item }}</small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="usu_password">Contraseña</label>
+              <input type="password" class="form-control" id="usu_password" formControlName="usu_password"
+                [ngClass]="{'is-invalid': (signInFormValidator.usu_password.touched || signInFormValidator.usu_password.dirty ) && signInFormValidator.usu_password.errors }">
+              <small id="emailHelp" class="form-text invalid-feedback">El campo es requerido</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary" (click)="signIn()">Iniciar Sesión</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

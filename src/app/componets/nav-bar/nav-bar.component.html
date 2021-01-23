@@ -12,8 +12,9 @@
       </li>
     </ul>
     <div class="form-inline my-2 my-lg-0">
-      <a class="nav-link" routerLink="/#">Iniciar Sesión</a>
-      <a class="nav-link" routerLink="/sign-up">Crear usuario</a>
+      <a class="nav-link" routerLink="/sign-in" *ngIf="!showButtons">Iniciar Sesión</a>
+      <a class="nav-link" routerLink="/sign-up" *ngIf="!showButtons">Crear usuario</a>
+      <a class="nav-link" routerLink="/#" *ngIf="showButtons" (click)="logout()">Cerrar sesión</a>
     </div>
   </div>
 </nav>
