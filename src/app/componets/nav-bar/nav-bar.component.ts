@@ -1,5 +1,6 @@
+import { AuthService } from './../../service/auth.service';
 import { HttpService } from './../../service/http.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,13 +12,21 @@ export class NavBarComponent implements OnInit {
   //Variables
   categorias: any = []
   count: number = 0;
+  @Input() showButtons: boolean = true
   constructor(
-    private httpService: HttpService
+    private httpService: HttpService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
-
+    console.log(this.showButtons)
     this.getCategorias()
+
+    if(this.authService.isAuthenticated()){
+      this.showButtons = true;
+    }else {
+      this.showButtons = false;
+    }
   }
 
 
@@ -34,6 +43,11 @@ export class NavBarComponent implements OnInit {
 
   }
 
+
+  logout(){
+    localStorage.clear();
+    this.showButtons = true
+  }
 
 
 }

@@ -39,6 +39,7 @@ export class ProductosComponent implements OnInit {
     },
   ]; */
   listaProductos: any = [];
+  showMessage: boolean = false;
   constructor(
     private activeRoute: ActivatedRoute,
     private httpService: HttpService
@@ -66,6 +67,12 @@ export class ProductosComponent implements OnInit {
         console.log("error",response)
       }
     })
+  }
+
+
+  checkComprar(event: any){
+    console.log(event)
+    this.showMessage = event
   }
 
 }

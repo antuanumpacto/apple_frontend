@@ -1,3 +1,5 @@
+import { SiginComponent } from './pages/sigin/sigin.component';
+import { SignupComponent } from './pages/signup/signup.component';
 import { ProductosComponent } from './pages/productos/productos.component';
 import { MacComponent } from './pages/mac/mac.component';
 import { NgModule } from '@angular/core';
@@ -10,6 +12,18 @@ const routes: Routes = [
   },
   {
     path: 'productos/:item',
+    component: ProductosComponent
+  },
+  {
+    path: 'sign-up',
+    component: SignupComponent
+  },
+  {
+    path: 'sign-in',
+    component: SiginComponent
+  },
+  {
+    path: '',
     component: ProductosComponent
   },
   {

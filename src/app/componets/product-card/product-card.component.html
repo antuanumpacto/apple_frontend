@@ -1,10 +1,8 @@
 <div class="card mb-3">
-    <img
-      [src]="producto.pro_imagen"
-      class="card-img-top" alt="...">
-    <div class="card-body h-fix">
-      <h5 class="card-title">{{ producto.pro_nombre }}</h5>
-      <p class="card-text">{{ producto.pro_descripcion }}</p>
-      <button class="btn btn-primary" (click)="comprar()">Comprar</button>
-    </div>
+  <img [src]="storage + producto.pro_imagen" class="card-img-top" alt="...">
+  <div class="card-body h-fix">
+    <h5 class="card-title">{{ producto.pro_nombre }}</h5>
+    <p class="card-text">{{ producto.pro_descripcion.length > 150 ? producto.pro_descripcion.substr(0,150) + '...' : producto.pro_descripcion}}</p>
+    <button class="btn btn-primary" (click)="comprar()">Comprar</button>
   </div>
+</div>

@@ -1,0 +1,61 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="container-fluid total-size d-flex justify-content-center align-content-center pt-5">
+  <div class="row w-100 d-flex justify-content-center">
+    <div class="w-100 col-lg-6 col-md-6 col-sm-12 ">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Crear usuario</h5>
+          <form [formGroup]="formSignup">
+            <div class="form-group">
+              <label for="usu_nombre">Nombre:</label>
+              <input type="text" class="form-control" id="usu_nombre" formControlName="usu_nombre"
+                [ngClass]="{'is-invalid': (signUpFormValidator.usu_nombre.touched || signUpFormValidator.usu_nombre.dirty ) && signUpFormValidator.usu_nombre.errors }">
+              <small id="emailHelp" class="form-text invalid-feedback">El campo es requerido</small>
+            </div>
+            <div class="form-group">
+              <label for="usu_apellido">Apellido:</label>
+              <input type="text" class="form-control" id="usu_apellido" formControlName="usu_apellido"
+                [ngClass]="{'is-invalid': (signUpFormValidator.usu_apellido.touched || signUpFormValidator.usu_apellido.dirty ) && signUpFormValidator.usu_apellido.errors }">
+              <small id="emailHelp" class="form-text invalid-feedback">El campo es requerido</small>
+            </div>
+            <div class="form-group">
+              <label>Edad:</label>
+              <input type="number" class="form-control" formControlName="usu_edad" min="0"
+                [ngClass]="{'is-invalid': (signUpFormValidator.usu_edad.touched || signUpFormValidator.usu_edad.dirty ) && signUpFormValidator.usu_edad.errors }">
+              <small id="emailHelp" class="form-text invalid-feedback">El campo es requerido</small>
+            </div>
+            <div class="form-group">
+              <label for="usu_email">Email<span style="color: #bd2130;"> *</span></label>
+              <input type="email" class="form-control" id="usu_email" formControlName="usu_email"
+                [ngClass]="{'is-invalid': ((signUpFormValidator.usu_email.touched || signUpFormValidator.usu_email.dirty ) && signUpFormValidator.usu_email.errors) || checkErrors(errores,'usu_email').length > 0 }">
+              <small id="emailHelp" class="form-text invalid-feedback"
+                *ngIf="((signUpFormValidator.usu_email.touched || signUpFormValidator.usu_email.dirty) && signUpFormValidator.usu_email.errors && signUpFormValidator.usu_email.errors.required)">El
+                campo es requerido</small>
+              <small id="emailHelp" class="form-text invalid-feedback"
+                *ngIf="(signUpFormValidator.usu_email.touched || signUpFormValidator.usu_email.dirty) && signUpFormValidator.usu_email.errors && signUpFormValidator.usu_email.errors.email">El
+                tiene un formato incorrecto</small>
+              <div *ngIf="errores">
+                <small *ngFor="let item of checkErrors(errores,'usu_email')"
+                  class="form-text color-red-small">{{ item }}</small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="usu_domicilio">Domicilio:</label>
+              <input type="text" class="form-control" id="usu_domicilio" formControlName="usu_domicilio"
+                [ngClass]="{'is-invalid': (signUpFormValidator.usu_domicilio.touched || signUpFormValidator.usu_domicilio.dirty ) && signUpFormValidator.usu_domicilio.errors }">
+            </div>
+            <div class="form-group">
+              <label for="usu_password">Contraseña</label>
+              <input type="password" class="form-control" id="usu_password" formControlName="usu_password"
+                [ngClass]="{'is-invalid': (signUpFormValidator.usu_password.touched || signUpFormValidator.usu_password.dirty ) && signUpFormValidator.usu_password.errors }">
+              <small id="emailHelp" class="form-text invalid-feedback">El campo es requerido</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary" (click)="saveForm()">Crear usuario</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
